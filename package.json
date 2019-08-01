@@ -1,5 +1,5 @@
 {
-  "name": "html-table-parser",
+  "name": "@autifyhq/html-table-parser",
   "version": "0.0.1",
   "description": "Parse html tables and convert to json",
   "main": "dist/html-table-parser.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/autifyhq/html-table-parser.git"
+    "url": "git://github.com/autifyhq/html-table-parser.git"
   },
   "author": "moriyak",
   "license": "ISC",
