@@ -1,0 +1,32 @@
+{
+  "name": "html-table-parser",
+  "version": "0.0.1",
+  "description": "Parse html tables and convert to json",
+  "main": "dist/html-table-parser.js",
+  "scripts": {
+    "test": "jest",
+    "build": "npx parcel build lib/html-table-parser.ts --no-source-maps",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/autifyhq/html-table-parser.git"
+  },
+  "author": "moriyak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/autifyhq/html-table-parser/issues"
+  },
+  "homepage": "https://github.com/autifyhq/html-table-parser#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.16",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.3"
+  }
+}
