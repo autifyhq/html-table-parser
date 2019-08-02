@@ -3,17 +3,29 @@ type CellElement = HTMLTableHeaderCellElement | HTMLTableCellElement
 
 export function parseTable(tableElement: HTMLTableElement) {
   let elementList = []
+  let parsedInfoList = []
 
-  return createCellMatrix(tableElement).map(row =>
-    row.map(cell => {
+  return createCellMatrix(tableElement).map((row, rowIndex) =>
+    row.map((cell, colIndex) => {
       let index = elementList.indexOf(cell)
       if (index === -1) {
         index = elementList.length
         elementList.push(cell)
+        parsedInfoList.push(
+          parceCell(cell, {
+            elementId: index,
+            left: colIndex,
+            top: rowIndex,
+            right: colIndex,
+            bottom: rowIndex
+          })
+        )
+      } else {
+        parsedInfoList[index].right = colIndex
+        parsedInfoList[index].bottom = rowIndex
       }
-      return parceCell(cell, {
-        elementId: index
-      })
+
+      return parsedInfoList[index]
     })
   )
 }
