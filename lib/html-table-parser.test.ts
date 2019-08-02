@@ -1,4 +1,4 @@
-import { parseTable } from "./html-table-parser"
+import { parseTable, getElementPositionInTable } from "./html-table-parser"
 
 const cases = [
   {
@@ -126,10 +126,28 @@ const cases = [
 describe("parseTable", () => {
   cases.forEach(testCase => {
     it(testCase.name, () => {
-      const table = document.createElement("table")
-      table.innerHTML = testCase.html
-
+      const table = createTable(testCase.html)
       expect(parseTable(table)).toStrictEqual(testCase.expected)
     })
   })
 })
+
+describe("getElementPositionInTable", () => {
+  it("return x and y in matrix", () => {
+    const table = createTable(`
+    <tr><td>1</td><td>2</tr>
+    <tr><td>3</td><td>4</tr>
+    `)
+    const cell = table.querySelectorAll("td")[3]
+    expect(getElementPositionInTable(table, cell)).toStrictEqual({
+      x: 1,
+      y: 1
+    })
+  })
+})
+
+function createTable(innerHTML: string) {
+  const table = document.createElement("table")
+  table.innerHTML = innerHTML
+  return table
+}

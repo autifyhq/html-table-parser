@@ -18,6 +18,23 @@ export function parseTable(tableElement: HTMLTableElement) {
   )
 }
 
+export function getElementPositionInTable(
+  tableElement: HTMLTableElement,
+  cellElement: CellElement
+) {
+  const matrix = createCellMatrix(tableElement)
+  for (let y = 0; y < matrix.length; y++) {
+    const row = matrix[y]
+    for (let x = 0; x < row.length; x++) {
+      if (row[x] === cellElement) {
+        return { x, y }
+      }
+    }
+  }
+
+  return null
+}
+
 /*
 Normalize table structure considering colspan and rowspan.
 +---------------+
