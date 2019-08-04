@@ -1,4 +1,8 @@
-import { parseTable, getElementPositionInTable } from "./html-table-parser"
+import {
+  parseTable,
+  getElementPositionInCellMatrix,
+  createCellMatrix
+} from "./html-table-parser"
 
 const cases = [
   {
@@ -273,7 +277,8 @@ describe("getElementPositionInTable", () => {
     <tr><td>3</td><td>4</tr>
     `)
     const cell = table.querySelectorAll("td")[3]
-    expect(getElementPositionInTable(table, cell)).toStrictEqual({
+    const matrix = createCellMatrix(table)
+    expect(getElementPositionInCellMatrix(matrix, cell)).toStrictEqual({
       x: 1,
       y: 1
     })

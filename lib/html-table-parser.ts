@@ -2,10 +2,14 @@ type RowElement = HTMLTableRowElement
 type CellElement = HTMLTableHeaderCellElement | HTMLTableCellElement
 
 export function parseTable(tableElement: HTMLTableElement) {
+  return parseCellMatrix(createCellMatrix(tableElement))
+}
+
+export function parseCellMatrix(cellMatrix: CellElement[][]) {
   let elementList = []
   let parsedInfoList = []
 
-  return createCellMatrix(tableElement).map((row, rowIndex) =>
+  return cellMatrix.map((row, rowIndex) =>
     row.map((cell, colIndex) => {
       let index = elementList.indexOf(cell)
       if (index === -1) {
@@ -30,13 +34,12 @@ export function parseTable(tableElement: HTMLTableElement) {
   )
 }
 
-export function getElementPositionInTable(
-  tableElement: HTMLTableElement,
+export function getElementPositionInCellMatrix(
+  cellMatrix: CellElement[][],
   cellElement: CellElement
 ) {
-  const matrix = createCellMatrix(tableElement)
-  for (let y = 0; y < matrix.length; y++) {
-    const row = matrix[y]
+  for (let y = 0; y < cellMatrix.length; y++) {
+    const row = cellMatrix[y]
     for (let x = 0; x < row.length; x++) {
       if (row[x] === cellElement) {
         return { x, y }
@@ -57,7 +60,9 @@ Normalize table structure considering colspan and rowspan.
 |       |   D   |
 +-------+-------+
 */
-function createCellMatrix(tableElement: HTMLTableElement) {
+export function createCellMatrix(
+  tableElement: HTMLTableElement
+): CellElement[][] {
   const rows = [tableElement.tHead]
     .concat(Array.from(tableElement.tBodies))
     .concat(tableElement.tFoot)
