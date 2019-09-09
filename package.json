@@ -1,6 +1,6 @@
 {
   "name": "@autifyhq/html-table-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Parse html tables and convert to json",
   "source": "lib/html-table-parser.ts",
   "main": "dist/html-table-parser.js",
@@ -22,7 +22,9 @@
     "url": "https://github.com/autifyhq/html-table-parser/issues"
   },
   "homepage": "https://github.com/autifyhq/html-table-parser#readme",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.2.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
