@@ -1,5 +1,5 @@
 {
-  "name": "@autifyhq/html-table-parser",
+  "name": "html-table-parser",
   "version": "0.0.4",
   "description": "Parse html tables and convert to json",
   "source": "lib/html-table-parser.ts",
@@ -9,15 +9,18 @@
     "build": "microbundle --no-sourcemap",
     "prepare": "npm run build"
   },
+  "files": [
+		"dist/html-table-parser.js",
+		"dist/html-table-parser.mjs",
+		"dist/html-table-parser.umd.js",
+		"dist/html-table-parser.d.ts"
+	],
   "repository": {
     "type": "git",
     "url": "git://github.com/autifyhq/html-table-parser.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "author": "moriyak",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/autifyhq/html-table-parser/issues"
   },
