@@ -6,8 +6,8 @@ export function parseTable(tableElement: HTMLTableElement) {
 }
 
 export function parseCellMatrix(cellMatrix: CellElement[][]) {
-  let elementList = []
-  let parsedInfoList = []
+  const elementList = []
+  const parsedInfoList = []
 
   return cellMatrix.map((row, rowIndex) =>
     row.map((cell, colIndex) => {
@@ -21,7 +21,7 @@ export function parseCellMatrix(cellMatrix: CellElement[][]) {
             left: colIndex,
             top: rowIndex,
             right: colIndex,
-            bottom: rowIndex
+            bottom: rowIndex,
           })
         )
       } else {
@@ -71,7 +71,7 @@ export function createCellMatrix(
     }, [])
 
   // Create array of empty arrays ([[], [], ..., []])
-  let cellMatrix = Array(rows.length)
+  const cellMatrix = Array(rows.length)
     .fill(null)
     .map(() => [])
 
@@ -112,7 +112,7 @@ function parceCell(cell: CellElement, additionalAttributes: object = {}) {
     {
       tagName: cell.tagName,
       textContent: cell.textContent,
-      attributes
+      attributes,
     },
     additionalAttributes
   )
