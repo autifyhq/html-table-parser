@@ -1,6 +1,6 @@
 {
   "name": "html-table-parser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Parse html tables and convert to json",
   "source": "lib/html-table-parser.ts",
   "main": "dist/html-table-parser.js",
@@ -26,16 +26,18 @@
   },
   "homepage": "https://github.com/autifyhq/html-table-parser#readme",
   "dependencies": {
-    "core-js": "^3.2.1"
+    "core-js": "^3.23.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-typescript": "^7.3.3",
-    "@types/jest": "^24.0.16",
-    "babel-jest": "^24.8.0",
-    "jest": "^24.8.0",
-    "microbundle": "^0.11.0",
-    "typescript": "^3.5.3"
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^28.1.4",
+    "babel-jest": "^28.1.2",
+    "jest": "^28.1.2",
+    "jest-environment-jsdom": "^28.1.2",
+    "microbundle": "^0.15.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   }
 }

@@ -1,7 +1,7 @@
 import {
   parseTable,
   getElementPositionInCellMatrix,
-  createCellMatrix
+  createCellMatrix,
 } from "./html-table-parser"
 
 const cases = [
@@ -25,7 +25,7 @@ const cases = [
           top: 0,
           right: 0,
           bottom: 0,
-          attributes: {}
+          attributes: {},
         },
         {
           elementId: 1,
@@ -35,8 +35,8 @@ const cases = [
           top: 0,
           right: 1,
           bottom: 0,
-          attributes: {}
-        }
+          attributes: {},
+        },
       ],
       [
         {
@@ -47,7 +47,7 @@ const cases = [
           top: 1,
           right: 0,
           bottom: 1,
-          attributes: {}
+          attributes: {},
         },
         {
           elementId: 3,
@@ -57,10 +57,10 @@ const cases = [
           top: 1,
           right: 1,
           bottom: 1,
-          attributes: {}
-        }
-      ]
-    ]
+          attributes: {},
+        },
+      ],
+    ],
   },
   {
     name: "can parse table with multiple tbodies",
@@ -88,8 +88,8 @@ const cases = [
           top: 0,
           right: 0,
           bottom: 0,
-          attributes: {}
-        }
+          attributes: {},
+        },
       ],
       [
         {
@@ -100,8 +100,8 @@ const cases = [
           top: 1,
           right: 0,
           bottom: 1,
-          attributes: {}
-        }
+          attributes: {},
+        },
       ],
       [
         {
@@ -112,8 +112,8 @@ const cases = [
           top: 2,
           right: 0,
           bottom: 2,
-          attributes: {}
-        }
+          attributes: {},
+        },
       ],
       [
         {
@@ -124,10 +124,10 @@ const cases = [
           top: 3,
           right: 0,
           bottom: 3,
-          attributes: {}
-        }
-      ]
-    ]
+          attributes: {},
+        },
+      ],
+    ],
   },
   {
     name: "can parse nested table",
@@ -149,8 +149,8 @@ const cases = [
           top: 0,
           right: 0,
           bottom: 0,
-          attributes: {}
-        }
+          attributes: {},
+        },
       ],
       [
         {
@@ -161,10 +161,10 @@ const cases = [
           top: 1,
           right: 0,
           bottom: 1,
-          attributes: {}
-        }
-      ]
-    ]
+          attributes: {},
+        },
+      ],
+    ],
   },
   {
     name: "can parse table with colspan",
@@ -181,7 +181,7 @@ const cases = [
           top: 0,
           right: 1,
           bottom: 0,
-          attributes: { colspan: "2" }
+          attributes: { colspan: "2" },
         },
         {
           elementId: 0,
@@ -191,7 +191,7 @@ const cases = [
           top: 0,
           right: 1,
           bottom: 0,
-          attributes: { colspan: "2" }
+          attributes: { colspan: "2" },
         },
         {
           elementId: 1,
@@ -201,10 +201,10 @@ const cases = [
           top: 0,
           right: 2,
           bottom: 0,
-          attributes: {}
-        }
-      ]
-    ]
+          attributes: {},
+        },
+      ],
+    ],
   },
   {
     name: "can parse table with rowpan",
@@ -222,7 +222,7 @@ const cases = [
           top: 0,
           right: 0,
           bottom: 1,
-          attributes: { rowspan: "2" }
+          attributes: { rowspan: "2" },
         },
         {
           elementId: 1,
@@ -232,8 +232,8 @@ const cases = [
           top: 0,
           right: 1,
           bottom: 0,
-          attributes: {}
-        }
+          attributes: {},
+        },
       ],
       [
         {
@@ -244,7 +244,7 @@ const cases = [
           top: 0,
           right: 0,
           bottom: 1,
-          attributes: { rowspan: "2" }
+          attributes: { rowspan: "2" },
         },
         {
           elementId: 2,
@@ -254,15 +254,15 @@ const cases = [
           top: 1,
           right: 1,
           bottom: 1,
-          attributes: {}
-        }
-      ]
-    ]
-  }
+          attributes: {},
+        },
+      ],
+    ],
+  },
 ]
 
 describe("parseTable", () => {
-  cases.forEach(testCase => {
+  cases.forEach((testCase) => {
     it(testCase.name, () => {
       const table = createTable(testCase.html)
       expect(parseTable(table)).toStrictEqual(testCase.expected)
@@ -280,7 +280,7 @@ describe("getElementPositionInTable", () => {
     const matrix = createCellMatrix(table)
     expect(getElementPositionInCellMatrix(matrix, cell)).toStrictEqual({
       x: 1,
-      y: 1
+      y: 1,
     })
   })
 })
