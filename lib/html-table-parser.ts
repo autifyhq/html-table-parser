@@ -1,13 +1,27 @@
 type RowElement = HTMLTableRowElement
 type CellElement = HTMLTableHeaderCellElement | HTMLTableCellElement
 
-export function parseTable(tableElement: HTMLTableElement) {
+export type CellAdditionalAttributes = {
+  elementId: number
+  left: number
+  top: number
+  right: number
+  bottom: number
+}
+
+export type CellInfo = {
+  tagName: string
+  textContent: string | null
+  attributes: Record<string, string>
+} & CellAdditionalAttributes
+
+export function parseTable(tableElement: HTMLTableElement): CellInfo[][] {
   return parseCellMatrix(createCellMatrix(tableElement))
 }
 
-export function parseCellMatrix(cellMatrix: CellElement[][]) {
-  const elementList = []
-  const parsedInfoList = []
+export function parseCellMatrix(cellMatrix: CellElement[][]): CellInfo[][] {
+  const elementList: CellElement[] = []
+  const parsedInfoList: CellInfo[] = []
 
   return cellMatrix.map((row, rowIndex) =>
     row.map((cell, colIndex) => {
@@ -37,7 +51,7 @@ export function parseCellMatrix(cellMatrix: CellElement[][]) {
 export function getElementPositionInCellMatrix(
   cellMatrix: CellElement[][],
   cellElement: CellElement
-) {
+): { x: number, y: number } | null {
   for (let y = 0; y < cellMatrix.length; y++) {
     const row = cellMatrix[y]
     for (let x = 0; x < row.length; x++) {
@@ -68,14 +82,14 @@ export function createCellMatrix(
     .concat(tableElement.tFoot)
     .reduce((rows, sections) => {
       return sections ? rows.concat(Array.from(sections.rows)) : rows
-    }, [])
+    }, [] as RowElement[])
 
   // Create array of empty arrays ([[], [], ..., []])
-  const cellMatrix = Array(rows.length)
+  const cellMatrix: CellElement[][] = Array(rows.length)
     .fill(null)
     .map(() => [])
 
-  rows.forEach((row: RowElement, rowIndex) => {
+  rows.forEach((row, rowIndex) => {
     // Fill matrix
     let colOffset = 0
 
@@ -103,11 +117,11 @@ export function createCellMatrix(
   return cellMatrix
 }
 
-function parceCell(cell: CellElement, additionalAttributes: object = {}) {
+function parceCell(cell: CellElement, additionalAttributes: CellAdditionalAttributes): CellInfo {
   const attributes = Array.from(cell.attributes).reduce((result, attr) => {
     result[attr.name] = attr.value
     return result
-  }, {})
+  }, {} as Record<string, string>)
   return Object.assign(
     {
       tagName: cell.tagName,
