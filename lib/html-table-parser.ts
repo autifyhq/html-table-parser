@@ -51,7 +51,7 @@ export function parseCellMatrix(cellMatrix: CellElement[][]): CellInfo[][] {
 export function getElementPositionInCellMatrix(
   cellMatrix: CellElement[][],
   cellElement: CellElement
-): { x: number, y: number } | null {
+): { x: number; y: number } | null {
   for (let y = 0; y < cellMatrix.length; y++) {
     const row = cellMatrix[y]
     for (let x = 0; x < row.length; x++) {
@@ -117,7 +117,10 @@ export function createCellMatrix(
   return cellMatrix
 }
 
-function parceCell(cell: CellElement, additionalAttributes: CellAdditionalAttributes): CellInfo {
+function parceCell(
+  cell: CellElement,
+  additionalAttributes: CellAdditionalAttributes
+): CellInfo {
   const attributes = Array.from(cell.attributes).reduce((result, attr) => {
     result[attr.name] = attr.value
     return result
